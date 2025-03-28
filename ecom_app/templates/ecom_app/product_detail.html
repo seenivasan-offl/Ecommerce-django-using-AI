@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <!-- Product Image Section -->
+        <div class="col-md-6">
+            <div class="product-image">
+                <img src="{{ product.image.url }}" class="img-fluid rounded shadow-lg" alt="{{ product.name }}">
+            </div>
+        </div>
+
+        <!-- Product Info Section -->
+        <div class="col-md-6">
+            <div class="product-details">
+                <h2 class="product-name text-dark">{{ product.name }}</h2>
+                <p class="product-description text-muted">{{ product.description }}</p>
+        
+                <!-- Price Section -->
+                <div class="price">
+                    <h4 class="text-success">${{ product.price }}</h4>
+                </div>
+        
+                <!-- Add to Cart Button -->
+                <button class="btn btn-lg btn-primary mt-4" id="addToCartButton" data-product-id="{{ product.id }}">Add to Cart</button>
+                
+                <script>
+                document.getElementById("addToCartButton").addEventListener("click", function() {
+                    var productId = this.getAttribute("data-product-id");
+        
+                    // Make an AJAX request to add product to the cart
+                    fetch(`/add-to-cart/${productId}/`, {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': '{{ csrf_token }}'  // CSRF token for security
+                        },
+                        body: JSON.stringify({
+                            product_id: productId
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert("Product added to cart!");
+                            // Optionally, update the cart item count in the UI
+                            document.getElementById("cartItemCount").innerText = data.cart_item_count;
+                        } else {
+                            alert("Failed to add product to cart.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert("Error adding product to cart.");
+                    });
+                });
+                </script>
+                <button class="btn btn-lg btn-primary mt-4" id="addToWishlist" data-product-id="{{ product.id }}">Add to Wishlist</button>
+                <span id="wishlistItemCount">0</span>
+                
+                <script>
+                    document.getElementById("addToWishlist").addEventListener("click", function() {
+                        var productId = this.getAttribute("data-product-id");
+                
+                        fetch(`/add-to-wishlist/${productId}/`, {
+                            method: "POST",
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': '{{ csrf_token }}'
+                            },
+                            body: JSON.stringify({ product_id: productId })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                alert("Product added to wishlist!");
+                                let wishlistCountElement = document.getElementById("wishlistItemCount");
+                                if (wishlistCountElement) {
+                                    wishlistCountElement.innerText = data.wishlist_item_count;
+                                }
+                            } else {
+                                alert("Failed to add product to wishlist.");
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert("Error adding product to wishlist.");
+                        });
+                    });
+                </script>
+                
+        
+                <!-- Optionally: Wishlist Section -->
+                <!-- <button class="btn btn-outline-secondary mt-3">
+                    <i class="bi bi-heart"></i> Add to Wishlist
+                </button> -->
+        
+                <!-- Social Share Icons -->
+                <div class="social-share mt-3">
+                    <span class="text-muted">Share this product:</span>
+                    <a href="#" class="btn btn-light btn-sm mx-1"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="btn btn-light btn-sm mx-1"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="btn btn-light btn-sm mx-1"><i class="bi bi-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+    <div class="recommended-products mt-5">
+        <h3>You may also like</h3>
+        <div class="row">
+            {% for p in recommended_products %}
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="{{ p.image.url }}" class="card-img-top" alt="{{ p.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ p.name }}</h5>
+                            <p class="card-text">${{ p.price }}</p>
+                            <a href="{% url 'product_detail' p.id %}" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+</div>
+
+<!-- Add some custom styles -->
+<style>
+    .product-name {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+    .product-description {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    .price h4 {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    .btn-primary {
+        padding: 12px 20px;
+        font-size: 1.1rem;
+    }
+    .btn-outline-secondary {
+        padding: 10px 18px;
+        font-size: 1rem;
+    }
+    .social-share i {
+        font-size: 1.3rem;
+    }
+    .product-image img {
+        max-height: 400px;
+        object-fit: cover;
+        border-radius: 15px;
+    }
+</style>
+
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    
+    <!-- Banner / Carousel -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+        </div>
+        <form method="GET" action="{% url 'search_product' %}" class="d-flex mb-3 position-relative">
+            <input type="text" id="search-input" name="q" class="form-control me-2" placeholder="Search products..." autocomplete="off">
+            <button type="submit" class="btn btn-primary">Search</button>
+            <div id="search-results" class="list-group position-absolute w-100" style="top: 100%; z-index: 1000;"></div>
+        </form>
+        
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchInput = document.getElementById("search-input");
+            const resultsDiv = document.getElementById("search-results");
+        
+            searchInput.addEventListener("keyup", function () {
+                let query = searchInput.value.trim();
+                if (query.length > 1) {
+                    fetch(`/ajax_search/?q=${query}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            resultsDiv.innerHTML = "";
+                            if (data.length > 0) {
+                                data.forEach(product => {
+                                    let item = document.createElement("a");
+                                    item.href = `/product/${product.id}`;
+                                    item.className = "list-group-item list-group-item-action";
+                                    item.textContent = product.name;
+                                    resultsDiv.appendChild(item);
+                                });
+                            } else {
+                                resultsDiv.innerHTML = `<div class="list-group-item">No results found</div>`;
+                            }
+                        });
+                } else {
+                    resultsDiv.innerHTML = "";
+                }
+            });
+        
+            // Hide dropdown when clicking outside
+            document.addEventListener("click", function (event) {
+                if (!searchInput.contains(event.target)) {
+                    resultsDiv.innerHTML = "";
+                }
+            });
+        });
+        </script>
+        
+        
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'images/1.png' %}" class="d-block w-100" alt="Banner 1">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/2.png' %}" class="d-block w-100" alt="Banner 2">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/3.png' %}" class="d-block w-100" alt="Banner 3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+    
+    {% if user.is_authenticated and recommended_products %}
+    <h2 class="my-4 text-center">Recommended for You</h2>
+    <div class="row">
+        {% for product in recommended_products %}
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">${{ product.price }}</p>
+                        <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+
+
+
+    <!-- Products Grid -->
+    <h2 class="mt-5 mb-4 text-center">Browse Products</h2>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">${{ product.price }}</p>
+                    <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

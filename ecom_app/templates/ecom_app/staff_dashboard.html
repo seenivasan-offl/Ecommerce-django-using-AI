@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Staff Dashboard - User Recommendations</h2>
+    
+    {% if users_data %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Email</th>
+                <th>Recommended Products</th>
+                <th>Reason</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user_data in users_data %}
+            <tr>
+                <td>{{ user_data.user.username }}</td>
+                <td>{{ user_data.user.email }}</td>
+                <td>
+                    <ul>
+                        {% for recommendation in user_data.recommendations %}
+                        <li>
+                            <strong>{{ recommendation.product.name }}</strong> - ${{ recommendation.product.price }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        {% for recommendation in user_data.recommendations %}
+                        <li>{{ recommendation.reason }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p class="text-center">No recommendations available.</p>
+    {% endif %}
+</div>
+{% endblock %}

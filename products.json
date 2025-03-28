@@ -1,0 +1,222 @@
+[
+    {
+        "model": "ecom_app.product",
+        "pk": 1,
+        "fields": {
+            "name": "Smartphone XYZ",
+            "description": "A high-performance smartphone with a stunning display.",
+            "price": "499.99",
+            "image": "product_images/smartphone_xyz.jpg",
+            "category": "Electronics"
+        }
+    },
+    {
+        "model": "ecom_app.product",
+        "pk": 2,
+        "fields": {
+            "name": "Wireless Earbuds Pro",
+            "description": "Noise-canceling wireless earbuds with long battery life.",
+            "price": "129.99",
+            "image": "product_images/wireless_earbuds_pro.jpg",
+            "category": "Electronics"
+        }
+    },
+    {
+        "model": "ecom_app.product",
+        "pk": 3,
+        "fields": {
+            "name": "Gaming Laptop X1",
+            "description": "Powerful gaming laptop with RTX graphics and 16GB RAM.",
+            "price": "1499.99",
+            "image": "product_images/gaming_laptop_x1.jpg",
+            "category": "Electronics"
+        }
+    },
+    {
+        "model": "ecom_app.product",
+        "pk": 4,
+        "fields": {
+            "name": "4K LED Smart TV",
+            "description": "55-inch Ultra HD Smart TV with HDR and streaming apps.",
+            "price": "799.99",
+            "image": "product_images/4k_led_smart_tv.jpg",
+            "category": "Electronics"
+        }
+    },
+    {
+        "model": "ecom_app.product",
+        "pk": 5,
+        "fields": {
+            "name": "Bluetooth Speaker Max",
+            "description": "Portable Bluetooth speaker with deep bass and waterproof design.",
+            "price": "59.99",
+            "image": "product_images/bluetooth_speaker_max.jpg",
+            "category": "Electronics"
+        }
+    },
+    {
+        "model": "ecom_app.product",
+        "pk": 6,
+        "fields": {
+            "name": "Men's Running Shoes",
+            "description": "Lightweight and breathable running shoes for men.",
+            "price": "69.99",
+            "image": "product_images/mens_running_shoes.jpg",
+            "category": "Fashion"
+        }
+    },
+    {
+        "model": "ecom_app.product",
+        "pk": 7,
+        "fields": {
+            "name": "Women's Handbag",
+            "description": "Elegant leather handbag for women with multiple compartments.",
+            "price": "89.99",
+            "image": "product_images/womens_handbag.jpg",
+            "category": "Fashion"
+        }
+    },
+    {
+        "model": "ecom_app.product",
+        "pk": 8,
+        "fields": {
+            "name": "Stylish Sunglasses",
+            "description": "UV-protected stylish sunglasses for outdoor activities.",
+            "price": "29.99",
+            "image": "product_images/stylish_sunglasses.jpg",
+            "category": "Fashion"
+        }
+    },
+    {
+        "model": "ecom_app.product",
+        "pk": 9,
+        "fields": {
+            "name": "Men's Leather Wallet",
+            "description": "Premium leather wallet with RFID protection.",
+            "price": "34.99",
+            "image": "product_images/mens_leather_wallet.jpg",
+            "category": "Fashion"
+        }
+    },
+    {
+        "model": "ecom_app.product",
+        "pk": 10,
+        "fields": {
+            "name": "Women's Casual Dress",
+            "description": "Comfortable and stylish casual dress for women.",
+            "price": "49.99",
+            "image": "product_images/womens_casual_dress.jpg",
+            "category": "Fashion"
+        }
+    },
+    {
+        "model": "ecom_app.product",
+        "pk": 11,
+        "fields": {
+            "name": "Organic Green Tea",
+            "description": "Premium organic green tea with antioxidants.",
+            "price": "19.99",
+            "image": "product_images/organic_green_tea.jpg",
+            "category": "Groceries"
+        }
+    },
+    {
+        "model": "ecom_app.product",
+        "pk": 12,
+        "fields": {
+            "name": "Whole Wheat Bread",
+            "description": "Freshly baked whole wheat bread with no preservatives.",
+            "price": "3.99",
+            "image": "product_images/whole_wheat_bread.jpg",
+            "category": "Groceries"
+        }
+    },
+    {
+        "model": "ecom_app.product",
+        "pk": 13,
+        "fields": {
+            "name": "Almonds (500g)",
+            "description": "High-quality almonds, packed with nutrients.",
+            "price": "12.99",
+            "image": "product_images/almonds_500g.jpg",
+            "category": "Groceries"
+        }
+    },
+    {
+        "model": "ecom_app.product",
+        "pk": 14,
+        "fields": {
+            "name": "Honey Jar (1kg)",
+            "description": "Pure natural honey sourced from organic farms.",
+            "price": "14.99",
+            "image": "product_images/honey_jar_1kg.jpg",
+            "category": "Groceries"
+        }
+    },
+    {
+        "model": "ecom_app.product",
+        "pk": 15,
+        "fields": {
+            "name": "Instant Coffee Powder",
+            "description": "Rich and aromatic instant coffee powder.",
+            "price": "8.99",
+            "image": "product_images/instant_coffee_powder.jpg",
+            "category": "Groceries"
+        }
+    },
+    {
+        "model": "ecom_app.product",
+        "pk": 16,
+        "fields": {
+            "name": "Yoga Mat",
+            "description": "Non-slip yoga mat for home and gym workouts.",
+            "price": "24.99",
+            "image": "product_images/yoga_mat.jpg",
+            "category": "Fitness"
+        }
+    },
+    {
+        "model": "ecom_app.product",
+        "pk": 17,
+        "fields": {
+            "name": "Dumbbell Set (10kg)",
+            "description": "Adjustable dumbbell set for strength training.",
+            "price": "49.99",
+            "image": "product_images/dumbbell_set_10kg.jpg",
+            "category": "Fitness"
+        }
+    },
+    {
+        "model": "ecom_app.product",
+        "pk": 18,
+        "fields": {
+            "name": "Treadmill",
+            "description": "Electric treadmill with multiple speed settings.",
+            "price": "299.99",
+            "image": "product_images/treadmill.jpg",
+            "category": "Fitness"
+        }
+    },
+    {
+        "model": "ecom_app.product",
+        "pk": 19,
+        "fields": {
+            "name": "Jump Rope",
+            "description": "Adjustable jump rope for cardio workouts.",
+            "price": "9.99",
+            "image": "product_images/jump_rope.jpg",
+            "category": "Fitness"
+        }
+    },
+    {
+        "model": "ecom_app.product",
+        "pk": 20,
+        "fields": {
+            "name": "Protein Powder (1kg)",
+            "description": "High-quality whey protein powder for muscle recovery.",
+            "price": "39.99",
+            "image": "product_images/protein_powder_1kg.jpg",
+            "category": "Fitness"
+        }
+    }
+]
