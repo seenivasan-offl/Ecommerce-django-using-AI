@@ -98,5 +98,3 @@ GitHub: seenivasan-offl
 
 LinkedIn: https://www.linkedin.com/in/seeni-vasan-h
 
-markdown
-Copy code
