@@ -3,6 +3,8 @@ Project Overview
 
 A full-featured Ecommerce web application built with Django and Python, featuring AI-based recommendations. Users can browse products, manage shopping carts, and place orders, while AI enhances personalized suggestions and search functionality.
 
+---
+
 Features
 
 User Authentication: Secure login, signup, and profile management.
@@ -19,6 +21,8 @@ Admin Dashboard: Manage products, categories, users, and orders.
 
 Responsive Design: Optimized for desktop, tablet, and mobile devices.
 
+---
+
 Technologies Used
 
 Backend: Django, Python
@@ -31,6 +35,8 @@ AI/ML: Python-based recommendation engine
 
 Tools: Git, GitHub
 
+---
+
 Installation
 
 Clone the repository:
@@ -42,6 +48,7 @@ Navigate to the project directory:
 
 cd Ecommerce-django-using-AI
 
+---
 
 Create a virtual environment:
 
@@ -66,8 +73,11 @@ Run the development server:
 
 python manage.py runserver
 
+---
 
 Open your browser at http://127.0.0.1:8000/
+
+---
 
 Project Structure
 
@@ -83,6 +93,8 @@ requirements.txt – Project dependencies
 
 db.sqlite3 – Database file
 
+---
+
 Future Enhancements
 
 Integrate a payment gateway (Razorpay/Stripe).
@@ -92,6 +104,8 @@ Upgrade AI recommendations using deep learning models.
 Add user reviews and ratings.
 
 Implement real-time notifications for orders and promotions.
+
+---
 
 Author
 
